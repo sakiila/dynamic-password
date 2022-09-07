@@ -25,11 +25,11 @@ Real Password: `2022Github10dypa15`
 
 # Future Features
 
-- support 'not' syntax
-- support fuzzy matching
-- support template with custom text
-- support more math operations (like cos, sin)
-- support other languages (like python)
+- [ ] support 'not' syntax
+- [ ] support fuzzy matching
+- [ ] support template with custom text
+- [ ] support more math operations (like cos, sin)
+- [ ] support other languages (like python)
 
 # License
 
