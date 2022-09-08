@@ -1,6 +1,6 @@
 # Dypa
 
-Dypa (IPA: /daɪˈp/) for Dynamic Password, help people to remember passwords easily.
+Dypa (IPA: /ˈdaɪpɑ/) for Dynamic Password, help people to remember passwords easily.
 
 # Introduction
 
@@ -15,13 +15,14 @@ Applications.
 
 ### how to use
 
-run the java class `TemplateService.match(template, inputPassword)`, return the `inputPassword` is or not correct.
+run the java class `Main.match(template, inputPassword)`, return the `inputPassword` is or not correct.
 
 ### user case
 
-Password Template: `{year}Github{month(+1)}dypa{minute(/2)}`  
-Real Password: `2022Github10dypa15`  
-(time now is 2022-09-07 15:30:00)
+Password Template: `{year}On{month(+1)}Take{minute(/2)}`  
+(For remember: this year On next month Take half of the minute)  
+Real Password: `2022On10Take15`  
+(time now is 2022-09-01 07:30:00)
 
 # Future Features
 
