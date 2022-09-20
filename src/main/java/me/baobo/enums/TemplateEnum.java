@@ -1,4 +1,4 @@
-package me.bob.enums;
+package me.baobo.enums;
 
 /**
  * @author Bob

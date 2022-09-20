@@ -22,7 +22,7 @@
       <version>3.8.1</version>
     </dependency>
   </dependencies>
-  <groupId>me.bob</groupId>
+  <groupId>me.baobo</groupId>
   <modelVersion>4.0.0</modelVersion>
   <name>dypa</name>
 

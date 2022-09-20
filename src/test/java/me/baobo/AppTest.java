@@ -1,4 +1,4 @@
-package me.bob;
+package me.baobo;
 
 import java.time.LocalDateTime;
 import junit.framework.Test;
