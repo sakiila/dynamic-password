@@ -15,7 +15,7 @@ Applications.
 
 ### how to use
 
-run the java class `Main.match(template, inputPassword)`, return the `inputPassword` is or not correct.
+run the java class `Main.matchWithBracket(template, inputPassword)`, return the `inputPassword` is or not correct.
 
 ### user case
 

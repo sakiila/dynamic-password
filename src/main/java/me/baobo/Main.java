@@ -1,57 +1,62 @@
 package me.baobo;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import me.baobo.service.DateTime;
+import lombok.experimental.UtilityClass;
+import me.baobo.object.Fragment;
+import me.baobo.service.DateTimeService;
+import me.baobo.utils.ParseUtil;
 
 /**
  * @author Bob
  */
+@UtilityClass
 public class Main {
     
-    public static boolean match(String template, String inputPassword) {
-        if (template == null || template.length() == 0) {
+    /**
+     * method 1: use string
+     *
+     * @param template
+     * @param inputPassword
+     * @return
+     */
+    public static boolean matchWithBracket(String template, String inputPassword) {
+        if (Objects.isNull(template) || template.isEmpty()) {
             return false;
         }
-        if (inputPassword == null || inputPassword.length() == 0) {
+        if (Objects.isNull(inputPassword) || inputPassword.isEmpty()) {
             return false;
         }
         
-        List<String> list = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        for (char c : template.toCharArray()) {
-            if (c == '{') {
-                list.add(sb.toString());
-                sb = new StringBuilder();
-            }
-            sb.append(c);
-            if (c == '}') {
-                list.add(sb.toString());
-                sb = new StringBuilder();
-            }
+        return match(ParseUtil.parseString(template), inputPassword);
+    }
+    
+    /**
+     * method 2: use fragment list
+     *
+     * @param fragmentList
+     * @param inputPassword
+     * @return
+     */
+    public static boolean match(List<Fragment> fragmentList, String inputPassword) {
+        if (Objects.isNull(fragmentList) || fragmentList.isEmpty()) {
+            return false;
         }
-        if (sb.length() > 0) {
-            list.add(sb.toString());
+        if (Objects.isNull(inputPassword) || inputPassword.isEmpty()) {
+            return false;
         }
         
-        // String collect = list.stream()
-        //     .map(Main::generatePassword)
-        //     .collect(Collectors.joining());
-        // System.out.println("collect = " + collect);
-        
-        return list.stream()
+        return fragmentList.stream()
             .map(Main::generatePassword)
             .collect(Collectors.joining())
             .equals(inputPassword);
     }
     
-    private static String generatePassword(String template) {
-        if (template.length() > 2
-            && template.charAt(0) == '{'
-            && template.charAt(template.length() - 1) == '}') {
-            template = DateTime.parse(template);
+    private static String generatePassword(Fragment fragment) {
+        if (fragment.isNeedParse()) {
+            return DateTimeService.parse(fragment.getTemplate());
         }
-        return template;
+        return fragment.getTemplate();
     }
 }

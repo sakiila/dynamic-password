@@ -2,11 +2,13 @@ package me.baobo.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import lombok.experimental.UtilityClass;
 
 /**
  * @author Bob
  */
-public class Calculate {
+@UtilityClass
+public class CalculateService {
     
     private static final Pattern PATTERN = Pattern.compile("\\((.*)\\)");
     
@@ -34,6 +36,8 @@ public class Calculate {
                     break;
                 case '%':
                     number %= value;
+                    break;
+                default:
                     break;
             }
         }
