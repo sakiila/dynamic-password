@@ -1,6 +1,7 @@
 # Dypa
 
-Dypa (IPA: /ˈdaɪpɑ/) for Dynamic Password, help people to remember passwords easily.
+Dypa (IPA: /ˈdaɪpɑ/) for Dynamic Password, help people to remember passwords easily, protect them safely.
+> Even if your password released this time, but they can't log in successfully next time.
 
 # Introduction
 

@@ -1,4 +1,4 @@
-package me.baobo.object;
+package me.baobo.meta;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Fragment {
     
-    private int number;
+    private int index;
     
     private String template;
     

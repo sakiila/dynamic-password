@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.experimental.UtilityClass;
-import me.baobo.object.Fragment;
-import me.baobo.service.DateTimeService;
-import me.baobo.utils.ParseUtil;
+import me.baobo.enums.TemplateEnum;
+import me.baobo.meta.Fragment;
+import me.baobo.utils.StringConvertUtil;
 
 /**
  * @author Bob
@@ -28,8 +28,8 @@ public class Main {
         if (Objects.isNull(inputPassword) || inputPassword.isEmpty()) {
             return false;
         }
-        
-        return match(ParseUtil.parseString(template), inputPassword);
+    
+        return match(StringConvertUtil.toList(template), inputPassword);
     }
     
     /**
@@ -55,8 +55,9 @@ public class Main {
     
     private static String generatePassword(Fragment fragment) {
         if (fragment.isNeedParse()) {
-            return DateTimeService.parse(fragment.getTemplate());
+            return TemplateEnum.parse(fragment.getTemplate());
         }
         return fragment.getTemplate();
     }
+    
 }

@@ -2,13 +2,11 @@ package me.baobo.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lombok.experimental.UtilityClass;
 
 /**
  * @author Bob
  */
-@UtilityClass
-public class CalculateService {
+public class ParseMath {
     
     private static final Pattern PATTERN = Pattern.compile("\\((.*)\\)");
     

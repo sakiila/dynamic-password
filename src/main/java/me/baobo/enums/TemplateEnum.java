@@ -1,29 +1,42 @@
 package me.baobo.enums;
 
+import java.util.Arrays;
+import java.util.function.Function;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import me.baobo.service.ParseDateTime;
+
 /**
  * @author Bob
  */
+@AllArgsConstructor
 public enum TemplateEnum {
-    YEAR("year"),
-    MONTH("month"),
-    DAY("day"),
-    HOUR("hour"),
-    MINUTE("minute"),
+    
+    YEAR("year", ParseDateTime::parseYear),
+    MONTH("month", ParseDateTime::parseMonth),
+    DAY("day", ParseDateTime::parseDay),
+    HOUR("hour", ParseDateTime::parseHour),
+    MINUTE("minute", ParseDateTime::parseMinute),
     /**
      * do not recommend
      */
-    SECOND("second"),
-    BRIGHT_DAY("bright_day"),
-    BLACK_NIGHT("black_night"),
+    SECOND("second", ParseDateTime::parseSecond),
+    BRIGHT_DAY("bright_day", ParseDateTime::parse),
+    BLACK_NIGHT("black_night", ParseDateTime::parse),
     ;
     
+    @Getter
     String template;
     
-    TemplateEnum(String template) {
-        this.template = template;
-    }
+    @Getter
+    Function<String, String> function;
     
-    public String getTemplate() {
-        return template;
+    public static String parse(String template) {
+        return Arrays.stream(TemplateEnum.values())
+            .filter(templateEnum -> template.contains(templateEnum.getTemplate()))
+            .map(TemplateEnum::getFunction)
+            .findFirst()
+            .orElse(Function.identity())
+            .apply(template);
     }
 }
